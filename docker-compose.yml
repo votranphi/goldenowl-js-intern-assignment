@@ -25,6 +25,7 @@ services:
       - bridge_network
     depends_on:
       - postgres_db
+    restart: on-failure
 
   g_scores_api:
     build:
