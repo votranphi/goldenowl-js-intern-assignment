@@ -1,0 +1,25 @@
+services:
+  postgres_db:
+    image: postgres:13.5
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    container_name: postgres_db
+    networks:
+      - bridge_network
+    ports:
+      - "5432:5432"
+    volumes:
+      - pg-data:/var/lib/postgresql/data
+
+
+
+volumes:
+  pg-data:
+
+
+
+networks:
+  bridge_network:
+    driver: bridge
