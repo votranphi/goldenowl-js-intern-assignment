@@ -23,11 +23,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   
   // Enable CORS
-  app.enableCors({
-    origin: configService.get<string>('FRONTEND_URL') || 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  });
+  app.enableCors();
 
   // Swagger documentation
   const config = new DocumentBuilder()
