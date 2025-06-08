@@ -85,7 +85,7 @@ VITE_API_BASE_URL=http://localhost:3000
 
 # Backend
 SERVER_PORT=3000
-FRONTEND_URL=http://localhost:5173
+NODE_ENV=development
 ```
 
 ---
@@ -97,6 +97,9 @@ cd backend
 npm install
 npm run start:dev
 ```
+
+- The API endpoints will be available on: [http://localhost:3000](http://localhost:3000)
+- The API Documentation will be available on: [http://localhost:3000/docs](http://localhost:3000/docs)
 
 ---
 

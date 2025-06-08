@@ -2,7 +2,7 @@
 
 G-Scores is a fullstack web application built for the **Golden Owl Intern Challenge**. It allows users to look up national exam results, view statistical reports by subject, and display top-performing students from specific subject groups.
 
-Video demo link of the project: [inserted_link](https://example.com)
+Video demo link of the project: [https://drive.google.com/file/d/1_OZ4Bixu4dBKiUzvr87wdJFyNQyXtayp/view?usp=drive_link](https://drive.google.com/file/d/1_OZ4Bixu4dBKiUzvr87wdJFyNQyXtayp/view?usp=drive_link)
 
 ---
 
@@ -76,13 +76,19 @@ To spin up the **entire application in production mode**, use the Docker setup p
 ### ▶️ Run Application
 
 ```bash
-docker-compose up --build
+docker compose up --build
 ````
 
 Then open your browser at:
 
 ```
 http://localhost
+```
+
+API Documentation is at:
+
+```
+http://localhost/api/docs
 ```
 
 The reverse proxy will route:

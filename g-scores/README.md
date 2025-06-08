@@ -77,7 +77,7 @@ VITE_API_BASE_URL=http://localhost:3000
 
 # Backend
 SERVER_PORT=3000
-FRONTEND_URL=http://localhost:5173
+NODE_ENV=development
 ```
 
 Update the URL to match your backend port if different.
