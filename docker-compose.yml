@@ -37,7 +37,6 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - SERVER_PORT=${SERVER_PORT}
-      - FRONTEND_URL=${FRONTEND_URL}
     container_name: g_scores_api
     ports:
       - "3000:3000"
