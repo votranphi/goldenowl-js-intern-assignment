@@ -14,11 +14,11 @@ dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 // Database configuration
 const dbConfig = {
-  user: process.env.POSTGRES_USER || 'gscores',
-  host: process.env.POSTGRES_HOST || 'localhost',
-  database: process.env.POSTGRES_DB || 'gscores',
-  password: process.env.POSTGRES_PASSWORD || 'gscores',
-  port: parseInt(process.env.POSTGRES_PORT) || 5432,
+  user: process.env.POSTGRES_USER,
+  host: process.env.POSTGRES_HOST,
+  database: process.env.POSTGRES_DB,
+  password: process.env.POSTGRES_PASSWORD,
+  port: parseInt(process.env.POSTGRES_PORT),
 };
 
 // Create PostgreSQL connection pool
