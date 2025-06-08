@@ -1,10 +1,10 @@
-import Home from "@/pages/Home";
+import Home from "@/pages";
 import { Routes, Route } from "react-router-dom";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/home" element={<Home />} />
+      <Route path="/" element={<Home />} />
     </Routes>
   );
 }
