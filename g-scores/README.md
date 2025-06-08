@@ -1,54 +1,140 @@
-# React + TypeScript + Vite
+# 🎯 G-Scores Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend** application for the G-Scores project — a student score management and statistics platform built for the Golden Owl Intern Challenge.
 
-Currently, two official plugins are available:
+The frontend consumes RESTful APIs from the NestJS backend and provides a responsive, clean UI using modern technologies.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 🖥️ Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React 18** + **Vite**
+- **TailwindCSS**
+- **shadcn/ui** (headless UI components)
+- **TypeScript**
+- **Axios** for API calls
+- **React Router** for routing
+- **Chart.js / Recharts** (depending on implementation)
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+---
+
+## 🌐 Features
+
+- Search for a student's scores by registration number (SBD)
+- View statistical reports of subject performance (in chart form)
+- Display top 10 students from Group A (Math + Physics + Chemistry)
+- Fully responsive layout (Mobile, Tablet, Desktop)
+- Simple and clean UI similar to the provided mockup
+
+---
+
+## 🏗️ Project Structure
+
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+/frontend/
+├── src/
+│   ├── components/         # UI reusable and shadcn components
+│   ├── pages/              # Page views
+│   ├── services/           # Axios API clients
+│   ├── types/              # TypeScript type definitions
+│   ├── routes/             # Page views routing
+│   ├── App.tsx             # Routing setup
+│   └── main.tsx            # Vite entry point
+├── tailwind.config.js
+├── vite.config.ts
+└── README.md
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+````
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
+---
+
+## 📦 Installation & Setup
+
+### 1. ⬇️ Install Dependencies
+
+```bash
+cd frontend
+npm install
+````
+
+---
+
+### 2. 🌍 Environment Variables
+
+Create a `.env` file in `goldenowl-js-intern-assignment` folder:
+
 ```
+# Posgres Config
+POSTGRES_USER=gscores
+POSTGRES_PASSWORD=gscores
+POSTGRES_DB=gscores
+POSTGRES_HOST=192.168.130.129
+POSTGRES_PORT=5432
+
+# Frontend
+VITE_API_BASE_URL=http://localhost:3000
+
+# Backend
+SERVER_PORT=3000
+FRONTEND_URL=http://localhost:5173
+```
+
+Update the URL to match your backend port if different.
+
+---
+
+### 3. ▶️ Start Development Server
+
+```bash
+npm run dev
+```
+
+The app will be running at [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🔌 API Integration
+
+The frontend integrates with the following backend APIs:
+
+| Feature        | Method | Endpoint                        | Description                                      |
+| -------------- | ------ | ------------------------------- | ------------------------------------------------ |
+| Search by SBD  | GET    | `/students/:sbd`                | Fetch scores of a student                        |
+| Score Report   | GET    | `/reports/subject-distribution` | Get score distribution for subjects              |
+| Top 10 Group A | GET    | `/reports/top10-groupA`         | Get top 10 students (Math + Physics + Chemistry) |
+
+All requests are made using **Axios** through wrapper functions in `services/api.ts`.
+
+---
+
+## 📱 Responsive Design
+
+* Layout adapts to all screen sizes: mobile, tablet, and desktop
+* Tailwind breakpoints are used (`sm`, `md`, `lg`)
+* Sidebar collapses on mobile
+* Charts scale fluidly using flex/grid layout
+
+---
+
+## 🧪 TypeScript Support
+
+* All props, API responses, and form inputs are strictly typed
+* Types are defined in `/types/`
+
+---
+
+## 🖼️ UI Mockup Reference
+
+The UI is based on the mockup provided in the challenge assignment and further improved using:
+
+* `shadcn/ui` for consistent, accessible components
+* TailwindCSS spacing and color utilities
+
+---
+
+## 📬 Future Improvements
+
+* Add dark mode
+* Improve error handling (toast notifications)
+* Add loading skeletons for API fetches
