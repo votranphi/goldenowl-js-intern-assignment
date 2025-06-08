@@ -38,6 +38,8 @@ services:
       - SERVER_PORT=${SERVER_PORT}
       - FRONTEND_URL=${FRONTEND_URL}
     container_name: g_scores_api
+    ports:
+      - "3000:3000"
     networks:
       - bridge_network
     depends_on:
@@ -50,10 +52,23 @@ services:
       - VITE_API_BASE_URL=${VITE_API_BASE_URL}
     container_name: g_scores
     ports:
-      - "80:5173"
+      - "5173:5173"
     networks:
       - bridge_network
     depends_on:
+      - g_scores_api
+
+  nginx:
+    image: nginx:latest
+    container_name: proxy_server
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    networks:
+      - bridge_network
+    depends_on:
+      - g_scores
       - g_scores_api
 
 
