@@ -37,6 +37,7 @@ services:
       - POSTGRES_HOST=${POSTGRES_HOST}
       - POSTGRES_PORT=${POSTGRES_PORT}
       - SERVER_PORT=${SERVER_PORT}
+      - NODE_ENV=${NODE_ENV}
     container_name: g_scores_api
     ports:
       - "3000:3000"

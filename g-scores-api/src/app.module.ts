@@ -22,7 +22,7 @@ import * as path from 'path';
         database: configService.get('POSTGRES_DB'),
         entities: [Student],
         synchronize: false, // Set to false in production
-        logging: process.env.NODE_ENV === 'development',
+        logging: configService.get('NODE_ENV') === 'development',
       }),
       inject: [ConfigService],
     }),

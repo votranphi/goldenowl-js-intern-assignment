@@ -31,6 +31,7 @@ async function bootstrap() {
     .setDescription('API for Vietnamese high school exam scores analysis')
     .setVersion('1.0')
     .addTag('Students')
+    .addServer(configService.get<string>('NODE_ENV') === 'production' ? '/api' : '/')
     .build();
   
   const document = SwaggerModule.createDocument(app, config);
