@@ -23,11 +23,7 @@ async function bootstrap() {
   const configService = app.get(ConfigService);
   
   // Enable CORS
-  app.enableCors({
-    origin: configService.get<string>('FRONTEND_URL') || 'http://localhost:5173',
-    methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-    credentials: true,
-  });
+  app.enableCors();
 
   // Swagger documentation
   const config = new DocumentBuilder()
@@ -41,7 +37,10 @@ async function bootstrap() {
   SwaggerModule.setup('api/docs', app, document);
 
   const port = configService.get<number>('SERVER_PORT') || 3000;
-  await app.listen(port);
+  await app.listen(port, '0.0.0.0', () => {
+    console.log(`Server running on port ${port}`);
+  });
+
   
   console.log(`Application is running on: http://localhost:${port}`);
   console.log(`Swagger documentation: http://localhost:${port}/api/docs`);
